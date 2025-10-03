@@ -12,8 +12,8 @@ function Login ({onLogin}){
         onLogin(username, password);
     }
     return(
-        <div className='login-container'>
-            <form onSubmit={handleSumbit}>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSumbit}>
                 <h2>Agenda de Contatos</h2>
                 
                     <input 

@@ -11,17 +11,17 @@ import ContactForm from "./ContactForm/ContactForm";
 function App(){
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeSreen, setActiveSreen] = useState('Welcome');
+  const [activeScreen, setActiveScreen] = useState('Welcome');
   const [contacts, setContacts] = useState([
     {id:1, name:'Tatiana Silva', phone: '1621068702'},
     {id:2, name: 'Graziela Carozelli', phone:'1621068713'}]);
 
 
     const[contactToEdit, setContactToEdit] = useState(null);
-    
+
     //Funçao de login
 
-    const randleLogin = (username, password) => {
+    const handleLogin = (username, password) => {
       if (username ==='admin' && password ==='123'){
         setIsLoggedIn(true);
       }else{
@@ -33,20 +33,21 @@ function App(){
     const handleDeleteContact = (id) => {}
     const startEdit = (contact) => {}
     const showCreatForm = () => {}
-    const handleNavigate = (sreen) =>{}
+    const handleNavigate = (screen) =>{}
 
 
     if(!isLoggedIn){
-      return <Login onLogin={randleLogin}/>
+      return <Login onLogin={handleLogin}/>
     }
     return(
       <div>
-        <Menu onNavigate={handleNAvigate} onCreate={showCreatForm}/>
+        <Menu onNavigate={handleNavigate} onCreate={showCreatForm}/>
         <main className='content'>
-          {activeSreeen ==='Welcome' && <Welcome/>}
-          {activeSreen === 'list' && <ContactList contacts={contacts}
-                            onEdit={startEdit}/>}
-          {activeSreen === 'form' && <ContactForm
+          {activeScreen ==='Welcome' && <Welcome/>}
+          {activeScreen === 'list' && <ContactList contacts={contacts}
+                            onEdit={startEdit}
+                            onDelete={handleDeleteContact}/>}
+          {activeScreen === 'form' && <ContactForm
                             contactToEdit={contactToEdit}
                             onSave={handleSaveContact}/>}
 
@@ -54,8 +55,4 @@ function App(){
         </main>
       </div>
     )
-
-    
-   
-
-}export default App;
+ }export default App;

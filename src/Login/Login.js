@@ -4,7 +4,7 @@ import './Login.css';
 
 function Login ({onLogin}){
 
-    const [username, setUsername] =useState("");
+    const [username, setUserName] =useState("");
     const[password, setPassword] = useState("");
 
     const handleSumbit = (e) =>{
@@ -15,20 +15,22 @@ function Login ({onLogin}){
         <div className="login-container">
             <form className="login-form" onSubmit={handleSumbit}>
                 <h2>Agenda de Contatos</h2>
+                <p>Faça login para continuar</p>
                 
                     <input 
                     type="text"
                     placeholder="Usuário(Admin)"
                     value = {username}
-                    oneChange={(e) => setUserName(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)}
                  />
                 
                 <input 
                     type="password"
-                    placeholder="(123)"
+                    placeholder="Senha (123)"
                     value = {password}
-                    oneChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                  />
+                 <button type="submit">Entrar</button>
 
             </form>
 

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './ContactForm.css';
 
-function ContactForm({oneSave, contactToEdit}){
+function ContactForm({onSave, contactToEdit}){
     const[name, setName] = useState('');
     const[phone, setPhone] = useState('');
 
@@ -24,7 +24,7 @@ function ContactForm({oneSave, contactToEdit}){
             alert('Por favor, preencha nome e telefone')
             return;
         }
-        oneSave({id:contactToEdit ? contactToEdit.id: null,  name, phone})
+        onSave({id:contactToEdit ? contactToEdit.id: null,  name, phone})
     }
 
     

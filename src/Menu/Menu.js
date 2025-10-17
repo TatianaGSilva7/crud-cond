@@ -8,7 +8,7 @@ function Menu({onNavigate, onCreate}){
             <h3 className='menu-title'>Agenda</h3>
             <ul className='menu-list'>
                 <li>
-                    <button className='menu-button' onClick={()=> onCreate}>
+                    <button className='menu-button' onClick={()=> onCreate()}>
                         Cadastrar Contato
                     </button>
                 </li>

@@ -29,23 +29,47 @@ function App(){
       }
     };
 
+
     const handleSaveContact = (contact) => {
       if(contact.id){
-        //se o contact.id tem um valoe então é uma atualização
+        //se o contact.id tem um valor então é uma atualização
         setContacts(contacts.map(c => c.id === contact.id ? contact: c));
-        alert("Contato alterado com sucesso!")
+        alert("Contato alterado com sucesso!");
       }else{
         contact.id = Date.now();
         setContacts([...contacts, contact]);
-        alert("Conato cadastrado com sucesso");
+        alert("Contato cadastrado com sucesso!");
       }
+      setActiveScreen('list');
+      setContactToEdit(null);
     }
 
-    const handleDeleteContact = (id) => {}
-    const startEdit = (contact) => {}
-    const showCreatForm = () => {}
-    const handleNavigate = (screen) =>{}
 
+    const handleDeleteContact = (id) => {
+      setContacts(contacts.filter(c => c.id !== id));
+      alert("Contato removido com sucesso!");
+    }
+
+
+    const startEdit = (contact) => {
+      setContactToEdit(contact);
+      setActiveScreen('form');
+    }
+
+
+    const showCreatForm = () => {
+      setContactToEdit(null);
+      setActiveScreen('form');
+    }
+
+    const handleNavigate = (screen) =>{
+      if(screen === 'logout'){
+        setIsLoggedIn(false);
+
+      }else{
+        setActiveScreen(screen);
+      }
+    }
 
     if(!isLoggedIn){
       return <Login onLogin={handleLogin}/>
